@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const bodyParser = require("body-parser");
 
 //First middleware before response is sent
 /*app.use('/', function(req, res, next){
@@ -22,12 +23,15 @@ app.use('/', function(req,res){
 */
 //console.log('Hello Web 2.0');
 
+/*Handling all the parser */
+app.use(bodyParser.json());
+
 app.post('/', function(req, res){
   var email = req.body.email;
   var amount = req.body.amount;
 
   res.send({"amount" : amount, "email" : email});
-  
+
 });
 
 app.listen(3000, ()=>{
