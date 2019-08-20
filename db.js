@@ -1,3 +1,4 @@
+
 var mysql = require("mysql");
 var db_config ={
   host : '127.0.0.1',
@@ -8,7 +9,12 @@ var db_config ={
 
 var connection;
 console.log("inside db.js 1")
-function handleConnection(){
+connection = mysql.createConnection(db_config);
+connection.connect(function(err){
+  if(err) throw err
+  console.log('You are now connected..');
+});
+/*function handleConnection(){
   connection = mysql.createConnection(db_config);
   console.log("inside Connection");
   connection.connect(function(err){
@@ -25,8 +31,8 @@ function handleConnection(){
       throw err;
     }
   });
-}
+}*/
 
-handleConnection();
+//handleConnection();
 console.log("established connection 2");
-module.export = connection;
+module.exports = connection;
