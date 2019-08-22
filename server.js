@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
-const save_user_information = require('./models/server_db');
+const {save_user_information} = require('./models/server_db');
 
 //First middleware before response is sent
 /*app.use('/', function(req, res, next){
@@ -26,7 +26,6 @@ app.use('/', function(req,res){
 
 /*Handling all the parser */
 app.use(bodyParser.json());
-
 app.post('/', async function(req, res){
   var email = req.body.email;
   var amount = req.body.amount;
