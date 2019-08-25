@@ -26,7 +26,7 @@ app.use('/', function(req,res){
 
 /*Handling all the parser */
 app.use(bodyParser.json());
-app.post('/', async function(req, res){
+app.post('/', function(req, res){
   var email = req.body.email;
   var amount = req.body.amount;
 
@@ -37,7 +37,7 @@ if(amount <= 1){
   return res.send(return_info);
 }
 
-  var result = await  save_user_information({"amount" : amount, "email" : email});
+  var result = save_user_information({"amount" : amount, "email" : email});
   res.send(result);
 
   //res.send({"amount" : amount, "email" : email});
