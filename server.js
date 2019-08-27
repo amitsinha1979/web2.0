@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
 const {save_user_information} = require('./models/server_db');
+const {get_total_amount} = require('./models/server_db');
 
 //First middleware before response is sent
 /*app.use('/', function(req, res, next){
@@ -39,9 +40,12 @@ if(amount <= 1){
 
   var result = save_user_information({"amount" : amount, "email" : email});
   res.send(result);
+});
 
-  //res.send({"amount" : amount, "email" : email});
-
+app.get('/get_total_amount', async(req, res)=>{
+  var result = get_total_amount();
+  console.log(result);
+  res.send(result);
 });
 
 app.listen(3000, ()=>{
